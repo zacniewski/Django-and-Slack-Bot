@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+from decouple import config
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,12 +22,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'zhf^obnhsr2*u^$#t+_gvv3*df4zv9lm^7#^i11-r7wztzk*+g'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['b8026c3b.ngrok.io']
 
 
 # Application definition
@@ -120,3 +122,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# SLACK API Configurations
+# ----------------------------------------------
+# use your keys
+SLACK_CLIENT_ID = config('SLACK_CLIENT_ID')
+SLACK_CLIENT_SECRET = config('SLACK_CLIENT_SECRET')
+SLACK_VERIFICATION_TOKEN = config('SLACK_VERIFICATION_TOKEN')
+SLACK_BOT_USER_TOKEN = config('SLACK_BOT_USER_TOKEN')
